@@ -1,4 +1,4 @@
-@extends('backend.components.layout')
+@extends('components.layout',["categories"=>$categories])
 @section('content')
 
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">

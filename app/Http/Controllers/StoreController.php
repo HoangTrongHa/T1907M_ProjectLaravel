@@ -25,7 +25,11 @@ class StoreController extends Controller
     }
     public function newStore()
     {
-        return view('store.new-store');
+        $category = Category::all();
+        return view('store.new-store',[
+            'categories'=>$category
+
+        ]);
     }
 
     public function saveStore(Request $request)

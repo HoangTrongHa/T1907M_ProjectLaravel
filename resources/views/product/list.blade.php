@@ -31,7 +31,6 @@
                 <div class="header">
                     <h2>
                         DANH SÁCH HỆ THỐNG CỬA HÀNG
-
                     </h2>
                     <ul class="header-dropdown m-r--5">
                         <li class="dropdown">
@@ -44,9 +43,7 @@
                             </ul>
                         </li>
                     </ul>
-
                 </div>
-
                 @if(session('thong_bao'))
                     <div class="header">
                         <div class="alert alert-success">
