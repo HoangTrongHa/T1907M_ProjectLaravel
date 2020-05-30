@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use Illuminate\Http\Request;
 use App\Models\Store;
 
@@ -14,12 +15,17 @@ class StoreController extends Controller
         $danang = Store::where('area',3)->get();
         $kvk = Store::where('area',4)->get();
         $store = Store::paginate(10);
-        return view('backend.store.store',compact('store','hanoi','hcm','danang','kvk'));
+        $category = Category::all();
+        return view('store.store',compact('store','hanoi','hcm','danang','kvk'),
+            [
+                'store'=> $store,
+                'categories'=>$category
+            ]
+        );
     }
-
     public function newStore()
     {
-        return view('backend.store.new-store');
+        return view('store.new-store');
     }
 
     public function saveStore(Request $request)
@@ -55,7 +61,7 @@ class StoreController extends Controller
     {
         $store = Store::findOrFail($id);
 
-        return view("backend.store.edit",compact('store'));
+        return view("store.edit",compact('store'));
     }
 
     public function update($id,Request $request)
@@ -103,14 +109,6 @@ class StoreController extends Controller
         return redirect()->to("admin/store")->with("thong_bao","Xóa thành công...");
     }
 
-
-
-
-
-
-
-
-
     //tìm kiếm theo khu vực
     public function tkHn(Request $request){
         $hanoi = Store::where('area',1)->get();
@@ -118,7 +116,7 @@ class StoreController extends Controller
         $danang = Store::where('area',3)->get();
         $kvk = Store::where('area',4)->get();
         $store = Store::where('area',$request->area)->paginate(10);
-        return view('backend.store.store',compact('store','hanoi','hcm','danang','kvk'));
+        return view('store.store',compact('store','hanoi','hcm','danang','kvk'));
     }
     public function tkDn(Request $request)
     {
@@ -127,7 +125,7 @@ class StoreController extends Controller
         $danang = Store::where('area',3)->get();
         $kvk = Store::where('area',4)->get();
         $store = Store::where('area',$request->area)->paginate(10);
-        return view('backend.store.store',compact('store','hanoi','hcm','danang','kvk'));
+        return view('store.store',compact('store','hanoi','hcm','danang','kvk'));
     }
     public function tkHcm(Request $request)
     {
@@ -136,7 +134,7 @@ class StoreController extends Controller
         $danang = Store::where('area',3)->get();
         $kvk = Store::where('area',4)->get();
         $store = Store::where('area',$request->area)->paginate(10);
-        return view('backend.store.store',compact('store','hanoi','hcm','danang','kvk'));
+        return view('store.store',compact('store','hanoi','hcm','danang','kvk'));
     }
     public function tkKvk(Request $request)
     {
@@ -145,6 +143,6 @@ class StoreController extends Controller
         $danang = Store::where('area',3)->get();
         $kvk = Store::where('area',4)->get();
         $store = Store::where('area',$request->area)->paginate(10);
-        return view('backend.store.store',compact('store','hanoi','hcm','danang','kvk'));
+        return view('store.store',compact('store','hanoi','hcm','danang','kvk'));
     }
 }

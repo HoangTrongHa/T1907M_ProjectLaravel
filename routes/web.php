@@ -13,12 +13,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function () {
-    $categories = DB::table("categories")->get();
-    return view('components.pm',[
-        "categories"=>$categories
-    ]);
-});
+Auth::routes();
+Route::get('/','HomeController@index');
+
+
 Route::get("/new-category","CategoryController@newcatrgory");
 Route::post("/save-category","CategoryController@saveCategory");
 
@@ -39,10 +37,8 @@ Route::group(['prefix' => 'admin'], function () {
     });
     Route::group(['prefix' => 'slide'], function () {
         Route::get('/', 'SlideController@index')->name('slide');
-
         Route::get('/new', 'SlideController@new')->name('new-slide');
         Route::post('/save', 'SlideController@save')->name('save-slide');
-
         Route::get('/check/{id}', 'SlideController@check');
         Route::get('/edit/{id}', "SlideController@edit")->name('edit-slide');
         Route::put('/update/{id}', "SlideController@update");
@@ -69,3 +65,9 @@ Route::group(['prefix' => 'admin'], function () {
 
 
 
+Route::group(['prefix' => 'type-product'], function () {
+    Route::get('/listCategory',"CategoryController@viewList"
+    )->name("listCategory");
+    Route::post('/deteleCategory/{id}',"CategoryController@deleteCategory")->name("deleteCategory");
+});
+Route::get('/home', 'HomeController@index')->name('home');

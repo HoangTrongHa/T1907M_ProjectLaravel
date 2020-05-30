@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Slide;
@@ -12,13 +13,23 @@ class SlideController extends Controller
 {
     public function index()
     {
+//        $category = DB::table("categories")->get();
+        $category = Category::all();
         $slide = Slide::paginate(10);
-        return view("slide.slide",compact('slide'));
+        return view("slides.listSlide",[
+            'slide' => $slide,
+            'categories'=>$category
+        ]);
     }
 
     public function new()
     {
-        return view("slide.new");
+        $category = Category::all();
+        return view("slides.newsSlide",[
+                'categories'=>$category
+
+            ]
+        );
     }
     public function save(Request $request)
     {

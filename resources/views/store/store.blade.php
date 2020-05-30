@@ -1,4 +1,4 @@
-@extends('components.layout')
+@extends('components.layout',["categories"=>$categories])
 @section('head-title','Hệ Thống Store')
 @section('title','Store')
 @section('content')

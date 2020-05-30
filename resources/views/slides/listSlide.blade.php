@@ -15,13 +15,11 @@
                             </a>
                             <ul class="dropdown-menu pull-right">
                                 <li><a class=" waves-effect waves-block" href="{{route('new-slide')}}">Thêm mới slide</a></li>
-
                             </ul>
                         </li>
                     </ul>
 
                 </div>
-
                 @if(session('thong_bao'))
                     <div class="header">
                         <div class="alert alert-success">
@@ -54,7 +52,6 @@
                                     <td><p class="btn bg-red btn-block btn-xs waves-effect" style="width: 60%">Ẩn</p></td>
                                 @elseif($value->status==2)
                                     <td><p class="btn bg-teal btn-block btn-xs waves-effect" style="width: 60%">Hiện</p></td>
-
                                 @endif
                                 <td>{{$value->created_at}}</td>
                                 <td>
