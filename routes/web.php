@@ -57,7 +57,8 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::group(['prefix' => 'type-product'], function () {
         Route::get('/listCategory',"CategoryController@viewList"
-        );
+        )->name("listCategory");
+        Route::post('/deteleCategory/{id}',"CategoryController@deleteCategory")->name("deleteCategory");
     });
     //news
     Route::group(['prefix' => "news"], function () {

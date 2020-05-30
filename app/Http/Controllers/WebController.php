@@ -14,7 +14,7 @@ class WebController extends Controller
     public function index()
     {
         $categories = DB::table("categories")->get();
-        dd($categories);
+//        dd($categories);
         return view("index",
             [
                "categories" => $categories

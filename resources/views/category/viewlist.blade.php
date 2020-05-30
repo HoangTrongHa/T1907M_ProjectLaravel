@@ -37,6 +37,13 @@
                                 <td><img src="{{$category->image}}"style="width: 50px;height: 50px"></td>
                                 <td>{{$category->created_at}}</td>
                                 <td>{{$category->updated_at}}</td>
+                                <td>
+                                    <form action="{{url("/admin/type-product/deteleCategory/{$category->id}")}}" method="post">
+                                        @method("POST")
+                                        @csrf
+                                        <button type="submit" onclick="return confirm('Are you sure?');" class="btn btn-outline-danger">Delete</button>
+                                    </form>
+                                </td>
                             </tr>
                         @endforeach
                         {{--                lay du lieu tu bang categories tren db --}}

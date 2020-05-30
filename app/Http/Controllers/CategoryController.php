@@ -3,11 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Foundation\Bus\DispatchesJobs;
-use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
@@ -36,15 +32,12 @@ class CategoryController extends Controller
                 "categories" => $category
             ]);
     }
-
-
     public function newcatrgory(){
 
         $categories = DB::table("categories")->get();
         return view('category.new',[
             "categories"=>$categories
         ]);
-
     }
     public function viewList(){
 
@@ -57,8 +50,7 @@ class CategoryController extends Controller
     public function saveCategory(Request $request)
     {
         try {
-//            dd($request->all());
-
+//            dd($request->get('name'));
             $data = new Category([
                 'name' => $request->get('name'),
                 'description'=>$request->get('description'),
@@ -69,6 +61,23 @@ class CategoryController extends Controller
             return redirect()->to("/admin/type-product/listCategory");
         } catch (\Exception $exception) {
             return redirect()->back();
+        }
+    }
+    public function deleteCategory(String $dataid){
+        try {
+            $data = Category::find($dataid)->delete();
+//            dd($data);
+//            dd(\App\Models\Category::all());
+//            dd(\App\Models\News::all());
+//            dd(Category::destroy($dataid));
+//            dd($categories);
+            return redirect('/admin/type-product/listCategory');
+//            $categories = DB::table("categories")->get();
+//            return view('category.viewlist',[
+//                "data"=>$categories
+//            ]);
+        }catch (\Exception $e){
+
         }
     }
 }

@@ -29,6 +29,8 @@
                             <th style="text-align: center">ID</th>
                             <th style="text-align: center">Name</th>
                             <th style="text-align: center" >Description</th>
+                            <td>hellos</td>
+
                         </tr>
                         </thead>
                         <tbody>
@@ -40,6 +42,12 @@
                                 <td>{{$category->image}}</td>
                                 <td>{{$category->created_at}}</td>
                                 <td>{{$category->updated_at}}</td>
+                                <td action="{{url("/admin/type-product/deleteCategory/{$category->__get("id")}")}}" method="delete">
+                                    {{--                                method theo routers--}}
+                                    @method("DELETE")
+                                    @csrf
+                                    <button type="submit" onclick="return confirm('Are you sure?');" class="btn btn-outline-danger">Delete</button>
+                                </td>
                             </tr>
                         @endforeach
                         {{--                lay du lieu tu bang categories tren db --}}

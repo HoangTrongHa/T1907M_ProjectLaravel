@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     {{--    <x-.head/>--}}
     @include('components.head')
@@ -203,11 +202,9 @@
         <div class="block-header">
             <h2>@yield('title')</h2>
         </div>
-
         @yield('content')
     </div>
 </section>
-
 @include('components.script')
 </body>
 

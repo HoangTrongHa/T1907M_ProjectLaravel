@@ -44,7 +44,7 @@
             </a>
         </li>
         <li>
-            <a href="{{route("listPro")}}">
+            <a href="{{url("/admin/type-product/listCategory")}}">
                 <i class="material-icons">layers</i>
                 <span>Sản Phẩm</span>
             </a>
@@ -56,20 +56,14 @@
             </a>
         </li>
         <li>
-            <a href="javascript:void(0);" class="menu-toggle">
+            <a href="#" class="menu-toggle">
                 <i class="material-icons">widgets</i>
                 <span>Loại sản phẩm</span>
             </a>
             <ul class="ml-menu">
             @foreach($categories as $category)
                     <li>
-
                         <a href="#" class="">
-                            <form action="{{url("/delete-category/{$category->id}")}}" method="post">
-                                @method("DELETE")
-                                @csrf
-                                <button type="submit" onclick="return confirm('Are you sure?');" class="btn btn-outline-danger"style="float: right">Delete</button>
-                            </form>
                             <span>{{$category->name}}</span>
                         </a>
                     </li>

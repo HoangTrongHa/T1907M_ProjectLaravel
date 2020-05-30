@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTableCategories extends Migration
+class CreateCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -18,6 +18,7 @@ class CreateTableCategories extends Migration
             $table->string('name')->nullable()->unique();
             $table->text('description');
             $table->string('image');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
