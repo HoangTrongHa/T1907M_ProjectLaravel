@@ -7,18 +7,6 @@
             <h2>
                 THÊM CỬA HÀNG
             </h2>
-            {{--                <ul class="header-dropdown m-r--5">--}}
-                {{--                    <li class="dropdown">--}}
-                    {{--                        <a class="dropdown-toggle" role="button" aria-expanded="true" aria-haspopup="true" href="javascript:void(0);" data-toggle="dropdown">--}}
-                        {{--                            <i class="material-icons">more_vert</i>--}}
-                        {{--                        </a>--}}
-                    {{--                        <ul class="dropdown-menu pull-right">--}}
-                        {{--                            <li><a class=" waves-effect waves-block" href="javascript:void(0);">Action</a></li>--}}
-                        {{--                            <li><a class=" waves-effect waves-block" href="javascript:void(0);">Another action</a></li>--}}
-                        {{--                            <li><a class=" waves-effect waves-block" href="javascript:void(0);">Something else here</a></li>--}}
-                        {{--                        </ul>--}}
-                    {{--                    </li>--}}
-                {{--                </ul>--}}
         </div>
         @if(count($errors)>0)
         <div class="alert alert-danger">

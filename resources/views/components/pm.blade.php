@@ -1,6 +1,5 @@
 @extends('components.layout',["categories"=>$categories])
 @section('content')
-    <!-- Widgets -->
     <div class="row clearfix">
         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
             <div class="info-box bg-pink hover-expand-effect">
@@ -47,8 +46,7 @@
             </div>
         </div>
     </div>
-    <!-- #END# Widgets -->
-    <!-- CPU Usage -->
+
     <div class="row clearfix">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div class="card">
@@ -83,7 +81,7 @@
             </div>
         </div>
     </div>
-    <!-- #END# CPU Usage -->
+
     <div class="row clearfix">
         <!-- Visitors -->
         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">

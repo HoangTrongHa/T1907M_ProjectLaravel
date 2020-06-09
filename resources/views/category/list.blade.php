@@ -71,7 +71,7 @@
                                 <i class="material-icons">more_vert</i>
                             </a>
                             <ul class="dropdown-menu pull-right">
-                                <li><a class=" waves-effect waves-block" href="{{url('admin/store')}}/new">Thêm mới cửa hàng</a></li>
+                                <li><a class=" waves-effect waves-block" href="{{url('admin/store')}}">Thêm mới cửa hàng</a></li>
 
                             </ul>
                         </li>

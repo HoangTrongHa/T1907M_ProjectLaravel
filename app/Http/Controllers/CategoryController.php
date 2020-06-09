@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
@@ -13,17 +14,6 @@ class CategoryController extends Controller
         $this->middleware('auth');
     }
 
-    public function listCategory()
-    {
-        $category = DB::table("categories")->get();
-//        $cakecategory = cakecategory::paginate(20);
-//        $cakecategory = DB::table("cakecategory")->get();
-//        $cakecategory = cakecategory::paginate(20);
-        return view("category.list",
-            [
-                "category" => $category
-            ]);
-    }
     public function list()
     {
         $category = DB::table("categories")->get();
@@ -38,14 +28,12 @@ class CategoryController extends Controller
             ]);
     }
     public function newcatrgory(){
-
         $categories = DB::table("categories")->get();
         return view('category.new',[
             "categories"=>$categories
         ]);
     }
     public function viewList(){
-
         $categories = DB::table("categories")->get();
         return view('category.viewlist',[
             "data"=>$categories

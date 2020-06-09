@@ -1,4 +1,3 @@
-{{--@extends('components.layout')--}}
 <div class="user-info">
     <div class="image">
         <img src="{{ Auth::user()->image }}" width="48" height="48" alt="User" />
@@ -25,7 +24,10 @@
                 <li><a href="javascript:void(0);"><i class="material-icons">shopping_cart</i>Sales</a></li>
                 <li><a href="javascript:void(0);"><i class="material-icons">favorite</i>Likes</a></li>
                 <li role="separator" class="divider"></li>
-                <li><a href="javascript:void(0);"><i class="material-icons">input</i>Sign Out</a></li>
+                <li><a href="javascript:void(0);"><i class="material-icons">input</i> <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>Sign Out</a></li>
+
             </ul>
         </div>
     </div>
@@ -54,9 +56,16 @@
             </a>
         </li>
         <li>
-            <a href="{{url("/admin/type-product/listCategory")}}">
+            <a href="{{url("/admin/product/listProduct")}}">
                 <i class="material-icons">layers</i>
                 <span>Sản Phẩm</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="{{url("/admin/type-product/listCategory")}}">
+                <i class="material-icons">layers</i>
+                <span>Danh Sách Loại Sản Phẩm</span>
             </a>
         </li>
         <li>

@@ -67,21 +67,13 @@
                                 <i class="material-icons">more_vert</i>
                             </a>
                             <ul class="dropdown-menu pull-right">
-                                <li><a class=" waves-effect waves-block" href="{{url('/new-category')}}">Thêm mới cửa hàng</a></li>
+                                <li><a class=" waves-effect waves-block" href="{{url('/new-category')}}">Thêm mới Sàn Phẩm</a></li>
 
                             </ul>
                         </li>
                     </ul>
 
                 </div>
-{{--                @if(session('thong_bao'))--}}
-{{--                    <div class="header">--}}
-{{--                        <div class="alert alert-success">--}}
-{{--                            {{session('thong_bao')}}--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                @endif--}}
-
                 <div class="body table-responsive">
                     <table class="table table-striped">
                         <thead>

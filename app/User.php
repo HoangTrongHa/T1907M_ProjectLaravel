@@ -36,4 +36,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public const ADMIN_ROLE = 1;
+    public const USER_ROLE = 0;
+
 }

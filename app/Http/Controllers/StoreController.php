@@ -7,7 +7,10 @@ use Illuminate\Http\Request;
 use App\Models\Store;
 
 class StoreController extends Controller
+{public function __construct()
 {
+    $this->middleware('auth');
+}
     public function store()
     {
         $hanoi = Store::where('area',1)->get();

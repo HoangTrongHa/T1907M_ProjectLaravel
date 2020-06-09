@@ -19,7 +19,6 @@ class CreateTableProducts extends Migration
             $table->text('product_description')->nullable();
             $table->float('price');
             $table->float('sale_price');
-            $table->tinyInteger('new')->default('2')->index();//sap xep theo thu tu tang dan
             $table->tinyInteger('status')->default('1')->index();//1 la an 2 la hien
             $table->text('ingredient');
             $table->unsignedBigInteger('category_id');

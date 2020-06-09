@@ -2,31 +2,43 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Models\Products;
 use Illuminate\Http\Request;
 use mysql_xdevapi\Exception;
+use function GuzzleHttp\Promise\all;
 
 class ProductController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function listProduct(){
-        return view("product.list");
+        $categories= Category::all();
+        $product = Products::all();
+        return view("product.list",[
+            'categories'=>$categories,
+            'product' => $product
+        ]);
     }
 
     public function newProduct(){
-        return view("product.new");
-    }
+        $categories= Category::all();
+        return view("product.new",[
+            'categories'=>$categories
+        ]);    }
 
 
     public function saveProduct(Request $request){
         $request->validate([
 
-            "product_name"=>"required|min:6|string",
-            "product_description"=>"required|min:10|string",
-            "price"=>"required|number",
+            "product_name"=>"required|min:1|string",
+            "product_description"=>"required|min:1|string",
+            "price"=>"required",
             "sale_price"=>"required",
-            "new"=>"required|min:6|string",
             "status"=>"required",
-            "ingredient"=>"required|min:6|string"
+            "ingredient"=>"required|min:1|string"
         ],[
             "product_name.required"=>"Tên sản phẩm không được để trống..",
             "product_name.min"=>"tên Sản Phẩm Phải trên 6 Kí Tự",
@@ -37,30 +49,26 @@ class ProductController extends Controller
             "price.required"=>"Giá tiền không được để trống",
             "price.number"=>"Giá tiền phải là kiểu số",
             "sale_price.required"=>"Khuyến mãi đấy mấy ông mãnh bà cô",
-            "new.required"=>"Sẩn phẩm mơi",
-            "new.min"=>"Sẩn phẩm mới phải trên 6 kí tự",
-            "new.string"=>"Sẩn phẩm là kiểu chuỗi ",
             "status.required"=>"Cho cửa hàng biết của bánh",
             "ingredient"=>"thành phần không được để trống...",
             "ingredient.min"=>"thành phần phải trên 6 kí tự",
             "ingredient.string"=>"thành phần phải là kiểu chuỗi",
-
         ]);
         try {
+//            dd(flo($request->get("price")));
             Products::create([
-
                 "product_name"=>$request->get("product_name"),
+                "category_id"=>$request->get("category_id"),
                 "product_description"=>$request->get("product_description"),
-                "price"=>$request->get("price"),
-                "sale_price"=>$request->get("sale_price"),
-                "new"=>$request->get("new"),
+                "price"=>(float) $request->get("price"),
+                "sale_price"=>(float)$request->get("sale_price"),
                 "status"=>$request->get("status"),
                 "ingredient"=>$request->get("ingredient"),
 
             ]);
+            return  redirect()->to("admin/product/listProduct")->with("thongbao","Thêm sản phẩm thành công");
         }catch (\Exception $exception){
             return redirect()->back("admin/product/newProduct");
         }
-        return  redirect()->to("admin/product/saveProduct")->with("thongbao","Thêm sản phẩm thành công");
     }
 }

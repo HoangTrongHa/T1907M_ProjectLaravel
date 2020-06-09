@@ -302,6 +302,5 @@
                 </div>
             </div>
         </div>
-        <!-- #END# Browser Usage -->
     </div>
 @endsection

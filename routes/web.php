@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
@@ -14,8 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Auth::routes();
-Route::get('/','HomeController@index');
+require_once "user.php";
 
+//Route::get('/','HomeController@index');
 
 Route::get("/new-category","CategoryController@newcatrgory");
 Route::post("/save-category","CategoryController@saveCategory");
@@ -60,9 +62,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::group(['prefix' => "news"], function () {
         Route::get('/listnews', "news@list")->name("listnews");
     });
-
     });
-
 
 
 Route::group(['prefix' => 'type-product'], function () {
@@ -71,3 +71,11 @@ Route::group(['prefix' => 'type-product'], function () {
     Route::post('/deteleCategory/{id}',"CategoryController@deleteCategory")->name("deleteCategory");
 });
 Route::get('/home', 'HomeController@index')->name('home');
+Route::group(["prefix"=>"user"],function (){
+    Route::get("/details/{id}","HomeController@details")->name("details");
+    Route::get("/addtoCart","HomeController@addToCart")->name("addToCart");
+    Route::get("/list/{id}","HomeController@list")->name("list");
+});
+
+Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
+

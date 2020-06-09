@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-    {{--    <x-.head/>--}}
     @include('components.head')
 </head>
 
@@ -194,7 +193,6 @@
             </div>
         </div>
     </aside>
-    <!-- #END# Right Sidebar -->
 </section>
 
 <section class="content">

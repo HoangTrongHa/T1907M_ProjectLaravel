@@ -1,6 +1,5 @@
-@extends('components.layout')
+@extends('components.layout',["categories"=>$categories])
 @section('content')
-
 
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="card">
@@ -8,18 +7,6 @@
                 <h2>
                     THÊM SẢN PHẨM
                 </h2>
-                {{--                <ul class="header-dropdown m-r--5">--}}
-                {{--                    <li class="dropdown">--}}
-                {{--                        <a class="dropdown-toggle" role="button" aria-expanded="true" aria-haspopup="true" href="javascript:void(0);" data-toggle="dropdown">--}}
-                {{--                            <i class="material-icons">more_vert</i>--}}
-                {{--                        </a>--}}
-                {{--                        <ul class="dropdown-menu pull-right">--}}
-                {{--                            <li><a class=" waves-effect waves-block" href="javascript:void(0);">Action</a></li>--}}
-                {{--                            <li><a class=" waves-effect waves-block" href="javascript:void(0);">Another action</a></li>--}}
-                {{--                            <li><a class=" waves-effect waves-block" href="javascript:void(0);">Something else here</a></li>--}}
-                {{--                        </ul>--}}
-                {{--                    </li>--}}
-                {{--                </ul>--}}
             </div>
             @if(count($errors)>0)
                 <div class="alert alert-danger">
@@ -33,7 +20,17 @@
                 <form method="post" action="{{url('admin/product/saveProduct')}}">
                     @csrf
                     @method("POST")
+                    <label for="email_address">Thể Loại Bánh</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            <select name="category_id" id="">
+                                    @foreach($categories as $category)
+                                    <option value="{{$category->id}}">{{$category->name}}</option>
+                                    @endforeach
 
+                            </select>
+                        </div>
+                    </div>
                     <label for="text">Tên Bánh</label>
                     <div class="form-group">
                         <div class="form-line">
@@ -58,12 +55,7 @@
                             <input class="form-control" id="" type="number" name="sale_price"   placeholder="Số % khuyến mãi">
                         </div>
                     </div>
-                    <label for="double">Mặt Hàng Mới</label>
-                    <div class="form-group">
-                        <div class="form-line">
-                            <input class="form-control" id="" type="text" name="new"   placeholder=".........">
-                        </div>
-                    </div>
+
                     <label for="email_address">Trạng Thái</label>
                     <div class="form-group">
                         <div class="form-line">
@@ -75,8 +67,6 @@
                                 <option value="5">thức hay ngủ</option>
                                 <option value="6">đói hay no</option>
                                 <option value="7">khát hay Không</option>
-
-
                             </select>
                         </div>
                     </div>

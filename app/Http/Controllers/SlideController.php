@@ -10,7 +10,10 @@ use Carbon\Carbon;
 use Illuminate\Support\Str;
 
 class SlideController extends Controller
+{public function __construct()
 {
+    $this->middleware('auth');
+}
     public function index()
     {
 //        $category = DB::table("categories")->get();
